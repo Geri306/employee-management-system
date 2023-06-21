@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "name": "phone",
+      "type": "hardware",
+      "amount": 5
+    },
+    {
+      "name": "notebook",
+      "type": "hardware",
+      "amount": 3
+    },
+    {
+      "name": "msOffice",
+      "type": "software",
+      "amount": 7
+    },
+    {
+      "name": "photoshop",
+      "type": "software",
+      "amount": 4
+    }
+  ]
+}

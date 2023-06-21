@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "age": 20,
+      "position": "developer",
+      "level": "intern",
+      "company": "BigDev"
+    },
+    {
+      "firstName": "Eva",
+      "lastName": "Smith",
+      "age": 70,
+      "position": "translator",
+      "level": "junior",
+      "company": "BigDev"
+    },
+    {
+      "firstName": "John",
+      "lastName": "Terry",
+      "age": 40,
+      "position": "tester",
+      "level": "intern",
+      "company": "BigDev"
+    },
+    {
+      "firstName": "Geri",
+      "lastName": "Smith",
+      "age": 27,
+      "position": "developer",
+      "level": "junior",
+      "company": "WaterWorks"
+    },
+    {
+      "firstName": "Annika",
+      "lastName": "Loeffler",
+      "age": 28,
+      "position": "translator",
+      "level": "senior",
+      "company": "WaterWorks"
+    },
+    {
+      "firstName": "Kinga",
+      "lastName": "Smith",
+      "age": 32,
+      "position": "tester",
+      "level": "senior",
+      "company": "WaterWorks"
+    }
+  ]
+}
