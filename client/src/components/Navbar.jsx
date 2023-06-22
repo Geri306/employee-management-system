@@ -9,20 +9,13 @@ export default function Navbar({
 }) {
   const onCheck = () => {
     const checkBoxes = document.querySelectorAll('.table-checkboxes')
-
     const newArray = []
-
     checkBoxes.forEach((box) => {
-      if (box.checked) newArray.push(box.name)
+      if (box.checked) {
+        newArray.push(box.name)
+      }
     })
-
     setSelectedTables(newArray)
-
-    /*  const joinedColumnNames = newArray.join('-')
-
-    setQuery((prev) => {
-      return { ...prev, select: joinedColumnNames }
-    }) */
   }
 
   return (
@@ -35,7 +28,13 @@ export default function Navbar({
             alt="mern stack logo"
           />
         </NavLink>
-        <NavLink to="/create/new/company">Create Company</NavLink>
+        <NavLink
+          to="/create/new/company"
+          className="btn btn-info btn-secondary"
+          style={{ margin: '1rem' }}
+        >
+          Create Company
+        </NavLink>
         <label className="form-check-label"></label>
         Show tables:
         <div
