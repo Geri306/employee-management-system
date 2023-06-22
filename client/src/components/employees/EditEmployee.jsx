@@ -152,25 +152,6 @@ export default function EditEmployee() {
           </div>
 
           <div className="form-check-inline">
-            <label htmlFor="">Assign company</label>
-            <select
-              style={{ height: 1.85 + 'rem' }}
-              className="m-1"
-              onChange={(e) => updateForm({ company: e.target.value })}
-            >
-              {companyOptions &&
-                companyOptions.map((company) => {
-                  return (
-                    <CompanyOptions
-                      name={company.name}
-                      selectedCompany={form.company}
-                    />
-                  )
-                })}
-            </select>
-          </div>
-
-          <div className="form-check-inline">
             <label className="m-3">Assign Equipment:</label>
 
             {Object.keys(form.equipment).length > 0
@@ -198,6 +179,26 @@ export default function EditEmployee() {
                   )
                 })
               : null}
+          </div>
+
+          <div className="form-check-inline">
+            <label htmlFor="">Assign company: </label>
+            <select
+              style={{ height: 1.85 + 'rem' }}
+              className="m-1"
+              onChange={(e) => updateForm({ company: e.target.value })}
+            >
+              {companyOptions &&
+                companyOptions.map((company, i) => {
+                  return (
+                    <CompanyOptions
+                      key={i}
+                      name={company.name}
+                      selectedCompany={form.company}
+                    />
+                  )
+                })}
+            </select>
           </div>
 
           <div className="form-group mx-sm-3 mb-3">
