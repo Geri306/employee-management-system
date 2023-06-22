@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import { errorHandler } from '../../helpers/helpers.js'
 import { v4 as uuidv4 } from 'uuid'
+import CompanyOptions from '../companies/CompanyOptions'
+import axios from 'axios'
 
 export default function CreateEmployee() {
   const emptyForm = {
@@ -17,6 +19,22 @@ export default function CreateEmployee() {
   const [form, setForm] = useState(emptyForm)
   const [inventory, setInventory] = useState()
   const [equipmentToBeAssigned, setEquipmentToBeAssigned] = useState()
+
+  const [companyOptions, setCompanyOptions] = useState([])
+
+  async function fetchCompanies() {
+    try {
+      const { data } = await axios.get(`/company/sendOptions`)
+      setCompanyOptions(data)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  useEffect(() => {
+    fetchCompanies()
+  }, [])
+
   const navigate = useNavigate()
 
   const fetchInventory = async () => {
@@ -67,9 +85,6 @@ export default function CreateEmployee() {
       })
 
       if (!res.ok) {
-        window.alert(
-          "msg from FE: error: res not ok (resp from POST - '/employees/add')"
-        )
         const data = await res.json()
         errorHandler(data)
         return
@@ -82,14 +97,12 @@ export default function CreateEmployee() {
       })
 
       if (!equipRes.ok) {
-        window.alert('equipRes not ok')
         const data = await equipRes.json()
         errorHandler(data)
         return
       }
 
       setForm(emptyForm)
-      window.alert(res.statusText)
       navigate('/')
     } catch (error) {
       errorHandler(error)
@@ -176,14 +189,26 @@ export default function CreateEmployee() {
           </div>
 
           <div className="mx-sm-3 mb-2 w-25">
-            <label htmlFor="company">Company</label>
-            <input
-              type="text"
-              className="form-control"
-              id="company"
-              value={form.company}
+            <label htmlFor="">Assign company: </label>
+            <select
+              style={{ height: 1.85 + 'rem' }}
+              className="m-1"
               onChange={(e) => updateForm({ company: e.target.value })}
-            />
+            >
+              <option defaultValue="DEFAULT" disabled>
+                Choose a company
+              </option>
+              {companyOptions &&
+                companyOptions.map((company, i) => {
+                  return (
+                    <CompanyOptions
+                      key={i}
+                      name={company.name}
+                      selectedCompany={form.company}
+                    />
+                  )
+                })}
+            </select>
           </div>
 
           <div className="form-group mx-sm-3 mb-3">
