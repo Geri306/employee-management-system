@@ -17,6 +17,11 @@ export default function CreateNewCompany() {
 
   function handleSubmit(e) {
     e.preventDefault()
+    const match = text.match(/([A-Za-z])/g)
+    if (!match || match.length < 3) {
+      alert('invalid company name')
+      return
+    }
     fetch('/company/create/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
